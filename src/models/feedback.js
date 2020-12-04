@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const FeedbackSchema = new mongoose.Schema({
-    feedback: [{ type: String }]
+    feedback: [{ type: String }],
+    resolved: [{ type: Boolean, required: true, default: false }]
 })
 const feedback = mongoose.model('Feedback', FeedbackSchema);
 module.exports = feedback;

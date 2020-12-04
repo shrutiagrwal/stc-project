@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-let reports = mongoose.Schema({
+let ReportsSchema = mongoose.Schema({
     CostToCompany: { type: String, required: true },
     jobEligibility: { type: String, required: true },
     AddedBy: { type: String, required: true },
@@ -8,3 +8,5 @@ let reports = mongoose.Schema({
     Batch: { type: String, required: true },
     Details: { type: String, required: true }
 })
+const reports = mongoose.model('Reports', ReportsSchema);
+module.exports = reports;
