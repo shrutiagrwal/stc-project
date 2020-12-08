@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 let ReportsSchema = mongoose.Schema({
+    companyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Companies' },
     CostToCompany: { type: String, required: true },
     jobEligibility: { type: String, required: true },
     AddedBy: { type: String, required: true },

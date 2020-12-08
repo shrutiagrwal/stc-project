@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let { DBPath } = require('../config.js')
+let { DBPath } = require('../config.js');
 DBConnectionOptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -9,7 +9,10 @@ DBConnectionOptions = {
 
 function mongoDB() {
     mongoose.connect(DBPath, DBConnectionOptions)
-        .then(() => console.log('MongoDB connected successfully'))
+        .then(() => {
+            console.log('MongoDB connected successfully')
+        })
         .catch((err) => console.log('error', err))
+
 }
 module.exports = mongoDB;

@@ -34,7 +34,7 @@ router.post('/login', async(req, res) => {
                     }
                     let payload = { username: message.data.lib_id }
                     let accesstoken = jwt.sign(payload, private)
-                    res.status(201).append('Authorization', `Bearer ${accesstoken}`).send({ accesstoken })
+                    res.status(201).append('Authorization', `Bearer ${accesstoken}`).send(`Bearer ${accesstoken}`)
                 }
             })
             .catch((err) => {
