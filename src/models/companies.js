@@ -6,8 +6,7 @@ const CompaniesSchema = new mongoose.Schema({
     Logo: { type: String, required: true },
     About: { type: String, required: true },
     Website: { type: String, required: true },
-    UploadDate: { type: Date, default: Date.now() },
-    Reports: [{ type: mongoose.Schema.Types.ObjectId, ref: "Reports" }]
+    UploadDate: { type: Date, default: Date.now() }
 })
 let companies = mongoose.model('Companies', CompaniesSchema)
 module.exports = companies
