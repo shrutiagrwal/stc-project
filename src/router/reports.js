@@ -40,9 +40,6 @@ const mongoose = require('mongoose')
 // });
 
 //getting reports by companies
-router.get('/companies',auth , async(req, res) => {
-    try {
-    //getting reports by companies
 router.get('/companies', auth, async(req, res) => {
     try {
         let reports = await mongoose.model("Reports").aggregate(
