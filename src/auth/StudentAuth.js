@@ -1,3 +1,4 @@
+
   const jwt = require('jsonwebtoken')
   const { JWTPrivateKey } = require('../config')
   const Student = require('../models/students')

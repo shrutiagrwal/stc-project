@@ -3,6 +3,8 @@ const mongoDB = require('./db/mongoose')
 const bodyParser = require('body-parser');
 const login = require('./router/login')
 const report = require('./router/reports')
+const feedback = require('./router/feedback')
+
 const home = require('./router/home')
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +18,12 @@ app.use('/api', home)
 
 //reports route-----------------------
 app.use('/api/reports', report)
-    //mongoDB connection------------------
+// <<<<<<< pawni
+
+//feedbacks route-----------------------
+app.use('/api/feedbacks', feedback)
+
+//mongoDB connection------------------
 mongoDB();
 
 //server start------------------------
