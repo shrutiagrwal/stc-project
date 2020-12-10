@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const login = require('./router/login')
 const report = require('./router/reports')
 const home = require('./router/home')
+const feedback = require('./router/feedback')
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,7 +17,11 @@ app.use('/api', home)
 
 //reports route-----------------------
 app.use('/api/reports', report)
-    //mongoDB connection------------------
+
+//feedbacks route-----------------------
+app.use('/api/feedbacks', feedback)
+    
+//mongoDB connection------------------
 mongoDB();
 
 //server start------------------------

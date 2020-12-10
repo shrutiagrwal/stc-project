@@ -4,6 +4,7 @@ const Company = require('../models/companies')
 const Report = require('../models/reports')
 const auth = require('../auth/StudentAuth')
 const mongoose = require('mongoose')
+
 router.get('/home', (req, res) => {
     res.send({ 'data': 'show home page' })
 })
