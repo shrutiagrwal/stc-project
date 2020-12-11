@@ -39,7 +39,7 @@ router.get('/:id',auth, async(req, res)=> {
 });
 
 //getting reports by companies
-router.get('/companies',auth , async(req, res) => {
+router.get('/companies', auth, async(req, res) => {
     try {
         let reports = await mongoose.model("Reports").aggregate(
             [{
