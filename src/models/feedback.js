@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const FeedbackSchema = new mongoose.Schema({
-    student: { type: mongoose.Schema.Types.ObjectId, ref: 'Students' },
+    studentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Students' },
     feedback: [{ type: String }],
-    resolved: [{ type: Boolean, required: true, default: false }]
+    resolved: [{ type: Boolean, required: true, default: false }],
+    createdAt: {type: Date, default: Date.now}
 })
 const feedback = mongoose.model('Feedback', FeedbackSchema);
 module.exports = feedback;

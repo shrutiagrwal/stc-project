@@ -16,24 +16,32 @@ router.post('/add',auth, async(req, res) => {
     }
 });
 
-//get all feedbacks
-router.get('/', async(req, res)=> {
-    try{
-        const feedback = await Feedback.find({});
-        if(!feedback){
-            return res.status(404).send({ 'error': 'no data is available' });
-        }
-        else{
-            res.send(feedback);
-        }
+// get all feedbacks
+router.get('/',auth, async(req, res)=>{
+    try {
+        let feedback = await mongoose.model("Feedback").aggregate(
+            [{
+                    "$lookup": {
+                        from: "students",
+                        localField: "studentId",
+                        foreignField: '_id',
+                        as: 'StudentDetails'
+                    }
+                },
+                { "$group": { _id: "$StudentDetails.libraryId", feedback: { $push: "$$ROOT" } } },
+                { "$sort": { "students.createdAt": -1 } }
+            ]
+        )
+        res.send(feedback)
+
+    } catch (err) {
+        console.log(err)
+        res.send({ 'error': 'no data is available' })
     }
-    catch(err){
-        res.status(400).send(err);
-    }
-});
+})
 
 //get feedbacks by id
-router.get('/:id', async(req, res)=> {
+router.get('/:id',auth, async(req, res)=> {
     const feedback_id = req.params.id;
     if (feedback_id.length === 0){
         return res.send({ data: 'No result available' })
