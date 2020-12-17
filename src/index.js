@@ -18,10 +18,10 @@ app.use('/api', home)
 
 //reports route-----------------------
 app.use('/api/reports', report)
-// <<<<<<< pawni
+
 
 //feedbacks route-----------------------
-app.use('/api/feedbacks', feedback)
+app.use('/api/feedback', feedback)
 
 //mongoDB connection------------------
 mongoDB();

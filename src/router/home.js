@@ -12,23 +12,26 @@ router.get('/home', (req, res) => {
 router.post('/search', auth, async(req, res) => {
     try {
         let name = req.body.company;
-        name = name.charAt(0).toUpperCase() + name.slice(1);
-        let companies = await Company.find({ name })
-        if (companies.length === 0)
-            return res.send({ data: 'No result available' })
+        // let reg = new RegExp(/${name}/)
+        let companies = await Company.find({ Name: { $regex: `.*${name}.*`, $options: 'i' } })
+            // if (companies.length === 0)
+            //     return res.send({ data: 'No result available' })
 
-        let reports = await mongoose.model("Reports").aggregate(
-            [{
-                "$lookup": {
-                    from: "companies",
-                    localField: "companyId",
-                    foreignField: '_id',
-                    as: 'CompanyDetails'
-                }
-            }]
-        )
-        res.send(reports)
+        // companies = await mongoose.model('Companies').aggregate(
+        //     [{
+        //             "$lookup": {
+        //                 from: "reports",
+        //                 localField: "reports",
+        //                 foreignField: "_id",
+        //                 as: "AllReports"
+        //             }
+        //         },
+        //         { "$project": { reports: 0 } }
+        //     ]
+        // )
+        res.send(companies)
     } catch (err) {
+        console.log(err)
         res.send({ 'error': 'no reports available for the company' })
     }
 

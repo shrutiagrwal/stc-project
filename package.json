@@ -17,5 +17,14 @@
     "mongoose": "^5.10.15",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.6"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shrutiagrwal/stc-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shrutiagrwal/stc-project/issues"
+  },
+  "homepage": "https://github.com/shrutiagrwal/stc-project#readme"
 }

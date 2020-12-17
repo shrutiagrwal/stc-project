@@ -5,10 +5,11 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    feedback: {
-        type: Array,
+    feedbackId: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feedback',
         required: true
-    }
+    }]
 });
 
 const Students = mongoose.model('Students', studentSchema);
